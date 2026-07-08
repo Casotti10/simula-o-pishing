@@ -1,0 +1,100 @@
+/* Reset básico: remove espaçamentos padrão do navegador e
+   faz padding/border contarem dentro do width, não além dele */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  color: #1f2937;
+  background-color: #f5f5f5;
+}
+
+/* Cabeçalho de alerta */
+.alerta {
+  background-color: #d10202;
+  border-bottom: 4px solid #420101;
+  padding: 2rem 1rem;
+  text-align: center;
+}
+
+.alerta .icone {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.alerta h1 {
+  font-size: 1.5rem;
+  color: #1f2937;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Conteúdo principal, centralizado e com largura máxima
+   para não ficar ilegível em telas muito largas */
+.conteudo {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.explicacao p {
+  margin-bottom: 1rem;
+}
+
+.orientacoes {
+  margin-top: 2rem;
+}
+
+.orientacoes h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.orientacoes ul {
+  list-style: none;
+}
+
+.orientacoes li {
+  background-color: #ffffff;
+  border-left: 4px solid #2563eb;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  border-radius: 4px;
+}
+
+.rodape {
+  text-align: center;
+  padding: 1.5rem 1rem;
+  color: #6b7280;
+  font-size: 0.9rem;
+  border-top: 1px solid #e5e7eb;
+}
+
+.botao-confirmar {
+    display: block;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  
+  .botao-confirmar:disabled {
+    background-color: #93c5fd;
+    cursor: default;
+  }
+  
+  .mensagem-confirmacao {
+    margin-top: 1rem;
+    color: #166534;
+    font-weight: 600;
+  }
+  

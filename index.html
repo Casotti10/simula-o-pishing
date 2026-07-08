@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso Invadido</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <meta name="robots" content="noindex, nofollow">
+
+    <header class= "alerta"> 
+        <span class="icone" aria-hidden="true">⚠️</span>
+        <h1>CUIDADO! SEUS DADOS FORAM VAZADOS</h1>
+        <h4>Calma! Você acabou de participar de uma simulação de phishing.</h4>
+    </header>
+
+    <main class="conteudo">
+        <section class="explicacao">
+            <p>
+            O e-mail ou link que você acabou de clicar fazia parte de um
+        <strong>teste interno de segurança</strong>, organizado pela equipe de
+        Segurança da Informação da empresa <strong>Diretriz/Dediccar.</strong> Nenhum dado seu foi coletado ou
+        comprometido.
+            </p> 
+            <p>
+            O objetivo desta simulação é ajudar todos nós a reconhecer tentativas
+            reais de phishing antes que causem algum dano.  
+            </p>
+        </section> 
+
+        <section class="orientacoes">   
+            <h2>Como identificar um pishing de verdade</h2>
+            <ul>
+                <li>Verifique sempre o endereço completo do remetente, não apenas o nome exibido.</li>
+                <li>Desconfie de mensagens que criam senso de urgência ("sua conta será bloqueada").</li>
+                <li>Passe o mouse sobre um link antes de clicar para ver o destino real.</li>
+                <li>Nunca informe senhas ou dados pessoais a partir de um link recebido por e-mail.</li>
+                <li>Na dúvida, reporte a mensagem ao time de Segurança da Informação.</li>
+            </ul>
+            
+            <button id="btn-confirmar" class="botao-confirmar">Li e entendi as orientações</button>
+            <p id="mensagem-confirmacao" class="mensagem-confirmacao" hidden>
+                Obrigado por revisar as orientações de segurança!
+            </p>
+        
+        </section>
+    </main>
+        
+    <footer class="rodape">
+        <p>Dúvidas? Fale com a equipe de Segurança da Informação: sti@diretriz.net</p>
+    </footer>
+
+<script src="js/script.js" defer></script>
+</body>
+</html>
