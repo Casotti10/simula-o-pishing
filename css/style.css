@@ -1,100 +1,141 @@
-/* Reset básico: remove espaçamentos padrão do navegador e
-   faz padding/border contarem dentro do width, não além dele */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  line-height: 1.6;
-  color: #1f2937;
-  background-color: #f5f5f5;
-}
-
-/* Cabeçalho de alerta */
-.alerta {
-  background-color: #d10202;
-  border-bottom: 4px solid #420101;
-  padding: 2rem 1rem;
-  text-align: center;
-}
-
-.alerta .icone {
-  font-size: 3rem;
-  display: block;
-  margin-bottom: 0.5rem;
-}
-
-.alerta h1 {
-  font-size: 1.5rem;
-  color: #1f2937;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-/* Conteúdo principal, centralizado e com largura máxima
-   para não ficar ilegível em telas muito largas */
-.conteudo {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 2rem 1.5rem;
-}
-
-.explicacao p {
-  margin-bottom: 1rem;
-}
-
-.orientacoes {
-  margin-top: 2rem;
-}
-
-.orientacoes h2 {
-  font-size: 1.25rem;
-  margin-bottom: 1rem;
-}
-
-.orientacoes ul {
-  list-style: none;
-}
-
-.orientacoes li {
-  background-color: #ffffff;
-  border-left: 4px solid #2563eb;
-  padding: 0.75rem 1rem;
-  margin-bottom: 0.75rem;
-  border-radius: 4px;
-}
-
-.rodape {
-  text-align: center;
-  padding: 1.5rem 1rem;
-  color: #6b7280;
-  font-size: 0.9rem;
-  border-top: 1px solid #e5e7eb;
-}
-
-.botao-confirmar {
+:root {
+    --color-bg: #f1f5f9;
+    --color-card: #ffffff;
+    --color-text: #1f2937;
+    --color-text-muted: #6b7280;
+    --color-accent: #2563eb;
+    --color-accent-hover: #1d4ed8;
+    --color-warning-bg: #fef3c7;
+    --color-warning-text: #92400e;
+    --color-success: #166534;
+    --radius: 12px;
+    --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.15);
+    --transition: 0.2s ease;
+  }
+  
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --color-bg: #010c25;
+      --color-card: rgb(104, 100, 100);
+      --color-text: #e2e8f0;
+      --color-text-muted: #94a3b8;
+      --color-warning-bg: #ca0101;
+      --color-warning-text: #fbbf24;
+      --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+    }
+  }
+  
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    transition: background-color var(--transition), color var(--transition);
+  }
+  
+  .alerta {
+    background-color: var(--color-warning-bg);
+    padding: clamp(2rem, 5vw, 3.5rem) 1rem 5rem;
+    text-align: center;
+    transition: background-color var(--transition);
+  }
+  
+  .alerta .icone {
+    font-size: clamp(2.5rem, 6vw, 3.5rem);
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  
+  .alerta h1 {
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    color: var(--color-warning-text);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .conteudo {
+    max-width: 700px;
+    margin: -3rem auto 0;
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+    background-color: var(--color-card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    position: relative;
+    transition: background-color var(--transition);
+  }
+  
+  .explicacao p {
+    margin-bottom: 1rem;
+  }
+  
+  .orientacoes {
+    margin-top: 2rem;
+  }
+  
+  .orientacoes h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+  
+  .orientacoes ul {
+    list-style: none;
+  }
+  
+  .orientacoes li {
+    background-color: var(--color-bg);
+    border-left: 4px solid var(--color-accent);
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.75rem;
+    border-radius: 8px;
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+  
+  .orientacoes li:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.2);
+  }
+  
+  .botao-confirmar {
     display: block;
     margin-top: 1.5rem;
-    padding: 0.75rem 1.5rem;
-    background-color: #2563eb;
+    padding: 0.85rem 1.75rem;
+    background-color: var(--color-accent);
     color: #ffffff;
     border: none;
-    border-radius: 4px;
+    border-radius: 999px;
     font-size: 1rem;
+    font-weight: 600;
     cursor: pointer;
+    transition: background-color var(--transition), transform var(--transition);
+  }
+  
+  .botao-confirmar:hover:not(:disabled) {
+    background-color: var(--color-accent-hover);
+    transform: translateY(-1px);
   }
   
   .botao-confirmar:disabled {
     background-color: #93c5fd;
     cursor: default;
+    transform: none;
   }
   
   .mensagem-confirmacao {
     margin-top: 1rem;
-    color: #166534;
+    color: var(--color-success);
     font-weight: 600;
+  }
+  
+  .rodape {
+    text-align: center;
+    padding: 2rem 1rem;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
   }
   
