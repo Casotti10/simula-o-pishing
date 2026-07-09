@@ -5,7 +5,7 @@ const redis = new Redis({
   token: process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN,
 });
 
-const SITE = 'https://seusite.com/'; // troque pelo seu domínio
+const SITE = 'https://atualize-seus-dadosdil.vercel.app/'; // troque pelo seu domínio
 
 export default async function handler(req, res) {
   try {
