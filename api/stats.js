@@ -1,9 +1,6 @@
-import { Redis } from '@upstash/redis';
+import Redis from 'ioredis';
 
-const redis = new Redis({
-  url: process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL,
-  token: process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN,
-});
+const redis = new Redis(process.env.REDIS_URL);
 
 export default async function handler(req, res) {
   if (!process.env.STATS_SENHA || req.query.senha !== process.env.STATS_SENHA) {
@@ -17,9 +14,9 @@ export default async function handler(req, res) {
   const log = await redis.lrange('log', 0, 49);                // últimos 50 eventos
 
   return res.status(200).json({
-    cliques_total: totalCliques || 0,
+    cliques_total: Number(totalCliques) || 0,
     cliques_pessoas_unicas: pessoasClicaram || 0,
-    leram_total: totalLeu || 0,
+    leram_total: Number(totalLeu) || 0,
     leram_pessoas_unicas: pessoasLeram || 0,
     ultimos_eventos: log.map((l) => (typeof l === 'string' ? JSON.parse(l) : l)),
   });

@@ -1,9 +1,6 @@
-import { Redis } from '@upstash/redis';
+import Redis from 'ioredis';
 
-const redis = new Redis({
-  url: process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL,
-  token: process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN,
-});
+const redis = new Redis(process.env.REDIS_URL);
 
 const SITE = 'https://atualize-seus-dadosdil.vercel.app/';
 
@@ -11,7 +8,7 @@ async function registrarEvento(id, evento) {
   try {
     await redis.incr(`total:${evento}`);
     await redis.sadd(`pessoas:${evento}`, id);
-    await redis.lpush('log', { id, evento, data: new Date().toISOString() });
+    await redis.lpush('log', JSON.stringify({ id, evento, data: new Date().toISOString() }));
     await redis.ltrim('log', 0, 999);
   } catch (e) {
     console.error('Falha ao registrar evento no Redis:', e);
