@@ -5,4 +5,5 @@ botao.addEventListener('click', () => {
     mensagem.hidden =  !mensagem.hidden;
     botao.disabled = true;
     botao.textContent = 'Obrigado!';
-}) 
+})  
+
