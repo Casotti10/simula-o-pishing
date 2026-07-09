@@ -16,7 +16,7 @@ async function registrarEvento(id, evento) {
 }
 
 export default async function handler(req, res) {
-  const id = (req.query.id || (req.body && req.body.id) || 'sem-id').toString();
+  const id = (req.query.id || req.query.rid || (req.body && (req.body.id || req.body.rid)) || 'sem-id').toString();
   const evento = (req.query.evento || (req.body && req.body.evento) || 'clique').toString();
 
   await registrarEvento(id, evento);
