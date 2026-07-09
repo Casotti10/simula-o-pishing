@@ -1,16 +1,12 @@
-const botao = document.querySelector('#btn-confirmar');
-const mensagem = document.querySelector('#mensagem-confirmacao'); 
-
-botao.addEventListener('click', () => {
-    mensagem.hidden =  !mensagem.hidden;
-    botao.disabled = true;
-    botao.textContent = 'Obrigado!';
-})  
-
+const botao = document.querySelector('#btn-confirmar'); //busca botao do dom uma unica vez e guarda referencia
+const mensagem = document.querySelector('#mensagem-confirmacao'); //
 const id = new URLSearchParams(location.search).get('id') || 'sem-id';
 
-document.getElementById('btn-confirmar').addEventListener('click', () => {
-  document.getElementById('mensagem-confirmacao').hidden = false;
+botao.addEventListener('click', () => {
+  mensagem.hidden = false;
+  botao.disabled = true;
+  botao.textContent = 'Obrigado!';
+
   fetch('/api/track', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

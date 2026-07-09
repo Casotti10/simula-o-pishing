@@ -5,24 +5,28 @@ const redis = new Redis({
   token: process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN,
 });
 
-const SITE = 'https://atualize-seus-dadosdil.vercel.app/'; // troque pelo seu domínio
+const SITE = 'https://atualize-seus-dadosdil.vercel.app/';
 
-export default async function handler(req, res) {
+async function registrarEvento(id, evento) {
   try {
-    const id = (req.query.id || (req.body && req.body.id) || 'sem-id').toString();
-    const evento = (req.query.evento || (req.body && req.body.evento) || 'clique').toString();
-
-    await redis.incr(`total:${evento}`);        // total de vezes
-    await redis.sadd(`pessoas:${evento}`, id);   // quem fez, SEM repetir
+    await redis.incr(`total:${evento}`);
+    await redis.sadd(`pessoas:${evento}`, id);
     await redis.lpush('log', { id, evento, data: new Date().toISOString() });
     await redis.ltrim('log', 0, 999);
-
-    if (req.method === 'GET') {                   // clique vindo do link do e-mail
-      res.setHeader('Location', `${SITE}?id=${encodeURIComponent(id)}`);
-      return res.status(302).end();
-    }
-    return res.status(200).json({ ok: true });
   } catch (e) {
-    return res.status(500).json({ ok: false, erro: String(e) });
+    console.error('Falha ao registrar evento no Redis:', e);
   }
+}
+
+export default async function handler(req, res) {
+  const id = (req.query.id || (req.body && req.body.id) || 'sem-id').toString();
+  const evento = (req.query.evento || (req.body && req.body.evento) || 'clique').toString();
+
+  await registrarEvento(id, evento);
+
+  if (req.method === 'GET') {
+    res.setHeader('Location', `${SITE}?id=${encodeURIComponent(id)}`);
+    return res.status(302).end();
+  }
+  return res.status(200).json({ ok: true });
 }

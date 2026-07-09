@@ -6,7 +6,7 @@ const redis = new Redis({
 });
 
 export default async function handler(req, res) {
-  if (req.query.senha !== process.env.STATS_SENHA) {
+  if (!process.env.STATS_SENHA || req.query.senha !== process.env.STATS_SENHA) {
     return res.status(401).json({ erro: 'nao autorizado' });
   }
 
