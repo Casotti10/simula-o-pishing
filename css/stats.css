@@ -1,0 +1,129 @@
+:root {
+  --color-bg: #f1f5f9;
+  --color-card: #ffffff;
+  --color-text: #1f2937;
+  --color-text-muted: #6b7280;
+  --color-accent: #2563eb;
+  --color-accent-hover: #1d4ed8;
+  --color-leram: #16a34a;
+  --color-erro: #b91c1c;
+  --radius: 12px;
+  --shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.18);
+  --transition: 0.2s ease;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #0b1220;
+    --color-card: #1e293b;
+    --color-text: #e2e8f0;
+    --color-text-muted: #94a3b8;
+    --shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.6);
+  }
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+.topo {
+  text-align: center;
+  padding: 2.5rem 1rem 1.5rem;
+}
+.topo h1 { font-size: clamp(1.5rem, 4vw, 2rem); }
+.topo .subtitulo { color: var(--color-text-muted); margin-top: 0.25rem; }
+
+.conteudo {
+  max-width: 820px;
+  margin: 0 auto;
+  padding: 0 1rem 3rem;
+}
+
+.cartao {
+  background-color: var(--color-card);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.cartao h2 { font-size: 1.1rem; margin-bottom: 1rem; }
+
+/* ---- Tela de senha ---- */
+.area-login { max-width: 420px; margin: 1rem auto; }
+.area-login form { display: flex; flex-direction: column; gap: 0.75rem; }
+.area-login label { font-weight: 600; }
+.area-login input {
+  padding: 0.75rem;
+  border: 1px solid var(--color-text-muted);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+.area-login button, .botao-atualizar {
+  padding: 0.8rem 1.5rem;
+  background-color: var(--color-accent);
+  color: #fff;
+  border: none;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition);
+}
+.area-login button:hover, .botao-atualizar:hover { background-color: var(--color-accent-hover); }
+.botao-atualizar { display: block; margin: 0 auto; }
+
+.erro { color: var(--color-erro); font-weight: 600; }
+
+/* ---- Cartões de números ---- */
+.cartoes {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+.numero { text-align: center; padding: 1.5rem 1rem; margin: 0; }
+.numero .valor {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--color-accent);
+  line-height: 1;
+}
+.numero.secundario .valor { color: var(--color-text-muted); font-size: 2rem; }
+.numero .rotulo { display: block; margin-top: 0.5rem; color: var(--color-text-muted); font-size: 0.9rem; }
+
+/* ---- Gráfico de barras ---- */
+.barra-linha { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.75rem; }
+.barra-nome { width: 70px; font-size: 0.9rem; flex-shrink: 0; }
+.barra-trilho {
+  flex: 1;
+  height: 22px;
+  background: var(--color-bg);
+  border-radius: 999px;
+  overflow: hidden;
+}
+.barra {
+  height: 100%;
+  width: 0;
+  border-radius: 999px;
+  transition: width 0.6s ease;
+}
+.barra-cliques { background: var(--color-accent); }
+.barra-leram { background: var(--color-leram); }
+.taxa { margin-top: 0.5rem; color: var(--color-text-muted); }
+.taxa strong { color: var(--color-leram); font-size: 1.15rem; }
+
+/* ---- Tabela ---- */
+.tabela-scroll { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9rem; }
+th, td { padding: 0.6rem 0.75rem; text-align: left; border-bottom: 1px solid var(--color-bg); }
+th { color: var(--color-text-muted); font-weight: 600; }
+tbody tr:hover td { background: var(--color-bg); }

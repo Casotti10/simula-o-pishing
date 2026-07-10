@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Painel da Campanha</title>
+    <link rel="stylesheet" href="css/stats.css">
+</head>
+<body>
+    <header class="topo">
+        <h1>📊 Painel da Campanha</h1>
+        <p class="subtitulo">Estatísticas da simulação de phishing</p>
+    </header>
+
+    <main class="conteudo">
+        <!-- Tela de senha: aparece primeiro -->
+        <section id="area-login" class="cartao area-login">
+            <form id="form-login">
+                <label for="senha">Senha de acesso ao painel</label>
+                <input type="password" id="senha" placeholder="Digite a senha" autocomplete="off" required>
+                <button type="submit">Entrar</button>
+                <p id="erro-login" class="erro" hidden></p>
+            </form>
+        </section>
+
+        <!-- Painel: fica escondido até a senha ser aceita -->
+        <section id="painel" hidden>
+            <div class="cartoes">
+                <div class="cartao numero">
+                    <span class="valor" id="cliques-unicas">0</span>
+                    <span class="rotulo">Pessoas que clicaram</span>
+                </div>
+                <div class="cartao numero">
+                    <span class="valor" id="leram-unicas">0</span>
+                    <span class="rotulo">Pessoas que leram</span>
+                </div>
+                <div class="cartao numero secundario">
+                    <span class="valor" id="cliques-total">0</span>
+                    <span class="rotulo">Cliques no total</span>
+                </div>
+                <div class="cartao numero secundario">
+                    <span class="valor" id="leram-total">0</span>
+                    <span class="rotulo">Leituras no total</span>
+                </div>
+            </div>
+
+            <div class="cartao grafico">
+                <h2>Dos que clicaram, quantos leram as orientações</h2>
+                <div class="barra-linha">
+                    <span class="barra-nome">Clicaram</span>
+                    <div class="barra-trilho"><div class="barra barra-cliques" id="barra-cliques"></div></div>
+                </div>
+                <div class="barra-linha">
+                    <span class="barra-nome">Leram</span>
+                    <div class="barra-trilho"><div class="barra barra-leram" id="barra-leram"></div></div>
+                </div>
+                <p class="taxa">Taxa de leitura: <strong id="taxa-num">0%</strong></p>
+            </div>
+
+            <div class="cartao">
+                <h2>Últimos eventos</h2>
+                <div class="tabela-scroll">
+                    <table>
+                        <thead>
+                            <tr><th>Data e hora</th><th>Evento</th><th>ID (rid)</th></tr>
+                        </thead>
+                        <tbody id="eventos"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <button id="btn-atualizar" class="botao-atualizar">🔄 Atualizar</button>
+        </section>
+    </main>
+
+<script src="js/stats.js" defer></script>
+</body>
+</html>
