@@ -1,5 +1,9 @@
 {
     "type": "module",
+    "scripts": {
+        "relatorio": "node --env-file=.env.gophish.local --env-file=.env.local scripts/relatorio-cliques.mjs",
+        "limpar": "node --env-file=.env.local scripts/limpar-dados.mjs"
+    },
     "dependencies": {
         "ioredis": "^5.11.1"
     }
